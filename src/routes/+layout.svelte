@@ -76,8 +76,8 @@
     crossorigin="anonymous"
   ></script>
 
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <!-- <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="96x96" /> -->
+  <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="SACDA Exhibit" />
@@ -90,15 +90,15 @@
     content="Emergence: Out of the Shadows - SACDA Exhibit"
   />
   <meta property="og:description" content={siteData.description} />
-  <meta property="og:image" content="/favicon-96x96.png" />
-  <meta property="og:url" content="https://emergence.sacda.ca" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:image" content="/logo.png" />
+  <!-- <meta property="og:url" content="https://sacda.ca" /> -->
+  <meta name="twitter:card" content="/poster.webp" />
   <meta
     name="twitter:title"
     content="Emergence: Out of the Shadows - SACDA Exhibit"
   />
   <meta name="twitter:description" content={siteData.description} />
-  <meta name="twitter:image" content="/favicon-96x96.png" />
+  <meta name="twitter:image" content="/favicon-32x32.png" />
 
   <meta name="author" content="South Asian Canadian Digital Archive" />
   <meta name="geo.placename" content={siteData.placename} />

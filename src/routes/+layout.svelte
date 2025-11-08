@@ -4,6 +4,7 @@
   import { fade, fly } from "svelte/transition";
   import { gsap } from "gsap";
   import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
+  import { withBase } from "$lib/utils";
 
   import {
     Header,
@@ -76,12 +77,19 @@
     crossorigin="anonymous"
   ></script>
 
-  <!-- <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="96x96" /> -->
-  <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link
+    rel="icon"
+    type="image/png"
+    href={withBase("/favicon-32x32.png")}
+    sizes="32x32"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    href={withBase("/logo.png")}
+    sizes="192x192"
+  />
   <meta name="apple-mobile-web-app-title" content="SACDA Exhibit" />
-  <link rel="manifest" href="/site.webmanifest" />
 
   <meta name="description" content={siteData.description} />
   <meta name="keywords" content={siteData.keywords.join(", ")} />
@@ -90,15 +98,15 @@
     content="Emergence: Out of the Shadows - SACDA Exhibit"
   />
   <meta property="og:description" content={siteData.description} />
-  <meta property="og:image" content="/logo.png" />
+  <meta property="og:image" content={withBase("/logo.png")} />
   <!-- <meta property="og:url" content="https://sacda.ca" /> -->
-  <meta name="twitter:card" content="/poster.webp" />
+  <meta name="twitter:card" content={withBase("/poster.webp")} />
   <meta
     name="twitter:title"
     content="Emergence: Out of the Shadows - SACDA Exhibit"
   />
   <meta name="twitter:description" content={siteData.description} />
-  <meta name="twitter:image" content="/favicon-32x32.png" />
+  <meta name="twitter:image" content={withBase("/favicon-32x32.png")} />
 
   <meta name="author" content="South Asian Canadian Digital Archive" />
   <meta name="geo.placename" content={siteData.placename} />

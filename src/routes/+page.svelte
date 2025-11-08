@@ -5,7 +5,7 @@
   import CastSection from "$lib/components/sections/CastSection.svelte";
   import About from "$lib/components/sections/About.svelte";
   import trailer from "$lib/assets/trailer.mp4";
-  import { asset } from "$app/paths";
+  import { withBase } from "$lib/utils";
   import Awards from "$lib/components/sections/Awards.svelte";
   import WatchNow from "$lib/components/sections/MoreLinksSection.svelte";
   import emergence from "$lib/content/emergence.json";
@@ -141,7 +141,7 @@
       >
         <source src={trailer} type="video/mp4" />
         <img
-          src={asset("/poster.webp")}
+          src={withBase("/poster.webp")}
           title="Your browser does not support the video tag."
           alt=""
         />

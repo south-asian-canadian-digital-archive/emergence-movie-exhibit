@@ -3,6 +3,7 @@
   import { browser } from "$app/environment";
   import { gsap } from "gsap";
   import { ScrollToPlugin } from "gsap/all";
+  import { base } from "$app/paths";
   import logo from "$lib/assets/logo.png";
   import { IsMobile } from "$lib/hooks/is-mobile.svelte.ts";
 
@@ -24,8 +25,8 @@
 
   function handleNavigation(target: string) {
     if (target === "/") {
-      // Navigate to home page
-      window.location.href = "/";
+      // Navigate to home page with base path
+      window.location.href = base || "/";
       return;
     }
 

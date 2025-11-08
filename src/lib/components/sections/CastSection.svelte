@@ -1,6 +1,7 @@
 <script lang="ts">
   import castData from "$lib/content/cast.json";
   import { Link, User } from "@lucide/svelte";
+  import { withBase } from "$lib/utils";
   import SectionTitle from "../SectionTitle.svelte";
   import Section from "../Section.svelte";
   import { IsMobile } from "$lib/hooks/is-mobile.svelte.ts";
@@ -57,7 +58,7 @@
           {#key selectedMember}
             {#if castMembers[selectedMember].photo}
               <img
-                src={castMembers[selectedMember].photo}
+                src={withBase(castMembers[selectedMember].photo)}
                 alt={castMembers[selectedMember].name}
                 class="w-full {isMobile.current
                   ? 'max-h-[30vh]'
@@ -89,8 +90,13 @@
             {castMembers[selectedMember].bio}
           </p>
           {#if castMembers[selectedMember].video}
-            <a href={castMembers[selectedMember].video} class=" leading-tight flex items-center gap-1 {textSizes.xs} underline italic">
-              Meet {castMembers[selectedMember].name} in this video interview <Link size={12} />
+            <a
+              href={castMembers[selectedMember].video}
+              class=" leading-tight flex items-center gap-1 {textSizes.xs} underline italic"
+            >
+              Meet {castMembers[selectedMember].name} in this video interview <Link
+                size={12}
+              />
             </a>
           {/if}
         </div>
@@ -122,7 +128,7 @@
           >
             {#if member.photo}
               <img
-                src={member.photo}
+                src={withBase(member.photo)}
                 alt={member.name}
                 class="w-full h-full object-cover"
               />
@@ -140,7 +146,9 @@
 
             <div
               class="absolute inset-0 bg-black/30 backdrop-blur flex items-end justify-end *:text-right p-1 sm:p-2 transition-opacity duration-300 {isMobile.current
-                ? (idx === selectedMember ? 'opacity-0' : 'opacity-100')
+                ? idx === selectedMember
+                  ? 'opacity-0'
+                  : 'opacity-100'
                 : 'group-hover:opacity-0'}"
             >
               <p

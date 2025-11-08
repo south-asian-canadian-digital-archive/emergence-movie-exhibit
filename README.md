@@ -1,68 +1,132 @@
 
-# Emergence Movie Exhibit
+# Emergence: Out of the Shadows - Digital Exhibit
 
-This is the official web exhibit for the documentary film **Emergence: South Asian Canadian Stories**. The project showcases the film, its cast, awards, and related content, built with SvelteKit and Tailwind CSS.
+A digital exhibit showcasing the acclaimed documentary "Emergence: Out of the Shadows" by the South Asian Canadian Digital Archive (SACDA).
 
-## About the Project
+## About the Film
 
-**Emergence** is a documentary exploring the stories of South Asian Canadians, their cultural heritage, and contributions. This web exhibit provides:
+**Emergence: Out of the Shadows** is a powerful documentary exploring the journeys of three South Asian LGBTQ+ individuals as they navigate identity, family, and belonging. The film has won 7 awards across 51 international film festivals.
 
-- Film details and synopsis
-- Cast and crew profiles
-- Awards and recognitions
-- Trailer and media assets
-- Interactive navigation and accessible design
+## About This Project
 
-## Tech Stack
+This web exhibit provides:
 
-- SvelteKit (Svelte 5 runes syntax)
-- Tailwind CSS (v4, with design tokens)
-- TypeScript
-- Custom SVG icons (no external icon libraries)
-- Figma design tokens integration
+- Interactive film synopsis in multiple languages
+- Cast and crew profiles with video interviews
+- Award-winning festival recognitions
+- Embedded trailers and full film viewing
+- Smooth scroll-based animations
+- Responsive design for all devices
 
-## Getting Started
+## Quick Start
 
-Install dependencies (use `pnpm`):
+### Prerequisites
+
+- Node.js (v18 or higher)
+- pnpm (v10.20.0 or higher)
+
+### Installation
+
+Install dependencies (always use `pnpm`):
 
 ```bash
 pnpm install
 ```
 
+### Development
+
 Start the development server:
 
 ```bash
-pnpm run dev
+pnpm dev
 ```
+
+The app will be available at `http://localhost:5173/`
+
+### Building
 
 Build for production:
 
 ```bash
-pnpm run build
+pnpm build
 ```
 
-Preview production build:
+### Preview Production Build
+
+Preview the production build:
 
 ```bash
-pnpm run preview
+pnpm preview
 ```
 
-> **Note:** Always use `pnpm` for package management.
+The app will be available at `http://localhost:4173/exhibits/emergence`
+
+> **Important:** Always use `pnpm` for package management.
 
 ## Project Structure
 
-- `src/routes/` — SvelteKit file-based routing (pages: awards, cast, etc.)
-- `src/lib/components/` — Custom and UI components
-- `src/lib/assets/` — Images, video, and media
-- `src/content/films/emergence.json` — Film metadata
-- `static/` — Public assets (hero poster, etc.)
+```
+.
+├── src/
+│   ├── lib/
+│   │   ├── assets/            # Imported assets (processed by Vite)
+│   │   ├── components/        # Svelte components
+│   │   ├── content/           # JSON data files (cast, synopsis, etc.)
+│   │   ├── hooks/             # Custom hooks (mobile detection)
+│   │   ├── icons/             # Icon components
+│   │   └── utils.ts           # Utility functions
+│   ├── routes/
+│   │   ├── +layout.svelte     # Root layout
+│   │   ├── +layout.ts         # Layout configuration (prerender)
+│   │   └── +page.svelte       # Home page
+│   ├── app.css                # Global styles (Tailwind)
+│   └── app.html               # HTML template
+├── static/                    # Static assets (served as-is)
+│   ├── crew/                  # Cast & crew photos
+│   ├── stills/                # Movie stills
+│   ├── favicon-32x32.png
+│   ├── logo.png
+│   └── poster.webp
+└── svelte.config.js           # SvelteKit configuration
+```
 
-## Contributing
+## Tech Stack
 
-Please follow code style and architecture guidelines in `.github/copilot-instructions.md` and `src/app.css` for theming. Use Svelte 5 runes syntax and Tailwind CSS utilities. All icons must be inline SVG from Figma assets.
+- **Framework**: SvelteKit (Svelte 5 with runes)
+- **Styling**: Tailwind CSS 4 with design tokens
+- **Animations**: GSAP (ScrollTrigger, ScrollToPlugin)
+- **UI Components**: shadcn-svelte
+- **TypeScript**: Full type safety
+- **Package Manager**: pnpm
+
+## Deployment
+
+After running `pnpm build`, the static files will be in the `build/` directory. These can be deployed to any static hosting service.
+
+## Development Tools
+
+```bash
+# Type checking
+pnpm check
+
+# Type checking with watch mode
+pnpm check:watch
+
+# Format code
+pnpm format
+
+# Lint code
+pnpm lint
+```
 
 ## License
 
-See LICENSE file for details.
+This project is part of the South Asian Canadian Digital Archive (SACDA).
 
-...existing code...
+## Acknowledgments
+
+- **Film**: "Emergence: Out of the Shadows" by Vinay Giridhar
+- **Production**: Sher Films (A Division of the Sher Vancouver LGBTQ Friends Society)
+- **Digital Exhibit**: South Asian Canadian Digital Archive (SACDA)
+- **Featured Stories**: Alex Sangha, Kayden Bhangu, Jag Nagra, and their families
+

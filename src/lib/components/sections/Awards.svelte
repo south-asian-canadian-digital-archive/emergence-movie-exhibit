@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { asset } from "$app/paths";
+  import { withBase } from "$lib/utils";
   import { onMount } from "svelte";
   import { browser } from "$app/environment";
   import Section from "$lib/components/Section.svelte";
@@ -10,20 +10,20 @@
   const isMobile = new IsMobile();
 
   const stills = [
-    asset("/stills/Alex Still Photo (1).jpg"),
-    asset("/stills/alex-and-kayden-sitting-down-on-park-bench.webp"),
-    asset("/stills/alex-in-bed.webp"),
-    asset("/stills/Avtar and Rajwant Still Photo (1) (1).jpg"),
-    asset("/stills/emergence-finecut-flat.00_03_59_01.still095.jpg"),
-    asset("/stills/emergence-finecut-flat.00_29_59_19.still066.jpg"),
-    asset("/stills/emergence-finecut-flat.00_39_23_01.still056.jpg"),
-    asset("/stills/emergence-finecut-flat.00_52_15_14.still006.jpg"),
-    asset("/stills/emergence-finecut-flat.01_04_44_03.still014.jpg"),
-    asset("/stills/img_1888.webp"),
-    asset("/stills/Jaspal Still Photo (1).jpg"),
-    asset("/stills/Kayden Still Photo (1).jpg"),
-    asset("/stills/Rajwant and Jag Still Photo (1).jpg"),
-    asset("/stills/vinay-reading-script-notes.webp"),
+    withBase("/stills/Alex Still Photo (1).jpg"),
+    withBase("/stills/alex-and-kayden-sitting-down-on-park-bench.webp"),
+    withBase("/stills/alex-in-bed.webp"),
+    withBase("/stills/Avtar and Rajwant Still Photo (1) (1).jpg"),
+    withBase("/stills/emergence-finecut-flat.00_03_59_01.still095.jpg"),
+    withBase("/stills/emergence-finecut-flat.00_29_59_19.still066.jpg"),
+    withBase("/stills/emergence-finecut-flat.00_39_23_01.still056.jpg"),
+    withBase("/stills/emergence-finecut-flat.00_52_15_14.still006.jpg"),
+    withBase("/stills/emergence-finecut-flat.01_04_44_03.still014.jpg"),
+    withBase("/stills/img_1888.webp"),
+    withBase("/stills/Jaspal Still Photo (1).jpg"),
+    withBase("/stills/Kayden Still Photo (1).jpg"),
+    withBase("/stills/Rajwant and Jag Still Photo (1).jpg"),
+    withBase("/stills/vinay-reading-script-notes.webp"),
   ];
 
   const awards = emergence.awardsHighlights;

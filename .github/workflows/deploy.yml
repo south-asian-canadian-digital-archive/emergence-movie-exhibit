@@ -1,4 +1,4 @@
-name: Build and Deploy (Emergence Exhibit)
+name: Build and Deploy (Exhibit)
 
 on:
   push:
@@ -36,10 +36,34 @@ jobs:
         run: pnpm build 
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLIC_DOMAIN: sacda.ca/exhibits/${{ vars.DESTINATION_DIR_NAME }}
 
-      - name: Deploy to /var/www/sacda.ca/html/exhibits/...
+      # - name: Deploy to /var/www/sacda.ca/html/exhibits/...
+      #   run: |
+      #     echo "Deploying to /var/www/sacda.ca/html/exhibits/${{ vars.DESTINATION_DIR_NAME }}"
+      #     rsync -av --delete ./build/ /var/www/sacda.ca/html/exhibits/${{ vars.DESTINATION_DIR_NAME }}/
+
+      - name: Deploy to Production
         run: |
-          # This syntax injects the variable from GitHub settings
-          echo "Deploying to /var/www/sacda.ca/html/exhibits/${{ vars.DESTINATION_DIR_NAME }}"
+          DEST_DIR_NAME="${{ vars.DESTINATION_DIR_NAME }}"
           
-          rsync -av --delete ./build/ /var/www/sacda.ca/html/exhibits/${{ vars.DESTINATION_DIR_NAME }}/
+          # This is the path your web server serves (the live symlink)
+          LIVE_DIR="/var/www/sacda.ca/html/exhibits/$DEST_DIR_NAME"
+          RELEASES_BASE_DIR="/opt/actions-runner/releases"
+          PROJECT_RELEASE_DIR="$RELEASES_BASE_DIR/$DEST_DIR_NAME"
+          NEW_RELEASE_NAME="$(date +%Y%m%d%H%M%S)"
+          
+          # This is the full path where the new build will be copied
+          # e.g., /opt/actions-runner/releases/emergence/20251114143000
+          NEW_RELEASE_PATH="$PROJECT_RELEASE_DIR/$NEW_RELEASE_NAME"
+          
+          echo "Deploying release $NEW_RELEASE_NAME"
+          
+          mkdir -p $PROJECT_RELEASE_DIR
+          rsync -av ./build/ $NEW_RELEASE_PATH/
+          ln -snf $NEW_RELEASE_PATH $LIVE_DIR
+          
+          echo "Deployment successful. $LIVE_DIR now points to $NEW_RELEASE_PATH"
+          
+          echo "Cleaning up old releases..."
+          ls -dt $PROJECT_RELEASE_DIR/* | tail -n +6 | xargs -r rm -rf

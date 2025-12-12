@@ -85,21 +85,6 @@
   });
 </script>
 
-<svelte:head>
-  <title>Emergence: Out of the Shadows - SACDA Digital Exhibit</title>
-  <meta
-    name="description"
-    content="An intimate documentary following three South Asian LGBTQ+ individuals as they navigate identity, family, and belonging. Winner of 7 awards across 51 international film festivals."
-  />
-  <meta
-    property="og:title"
-    content="Emergence: Out of the Shadows - Digital Exhibit"
-  />
-  <meta
-    property="og:description"
-    content="Discover the powerful stories of Kayden, Jag, and Amar in this acclaimed documentary."
-  />
-</svelte:head>
 
 <main class="*:rounded-t-2xl">
   <!-- svelte-ignore a11y_click_events_have_key_events -->

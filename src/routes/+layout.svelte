@@ -119,9 +119,9 @@
   <meta name="keywords" content={siteData.keywords.join(", ")} />
 
   <!-- Facebook Meta Tags -->
-  <meta property="og:url" content="https://sacda.ca/" />
+  <meta property="og:url" content="https://sacda.ca/exhibits/emergence/" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="South Asian Canadian Digital Archive" />
+  <meta property="og:title" content="Emergence: Out of the Shadows | SACDA" />
   <meta
     property="og:description"
     content="For Kayden, Jag, and Amar, awakening to and expressing their sexuality within conservative South Asian families was a lonely and terrifying experience. Heart-wrenching and healing, their distinct coming-out paths offer comfort, compassion, and inspiration to individuals and communities struggling with acceptance."
@@ -134,8 +134,8 @@
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta property="twitter:domain" content="sacda.ca" />
-  <meta property="twitter:url" content="https://sacda.ca/" />
-  <meta name="twitter:title" content="South Asian Canadian Digital Archive" />
+  <meta property="twitter:url" content="https://sacda.ca/exhibits/emergence/" />
+  <meta name="twitter:title" content="Emergence: Out of the Shadows | SACDA" />
   <meta
     name="twitter:description"
     content="For Kayden, Jag, and Amar, awakening to and expressing their sexuality within conservative South Asian families was a lonely and terrifying experience. Heart-wrenching and healing, their distinct coming-out paths offer comfort, compassion, and inspiration to individuals and communities struggling with acceptance."

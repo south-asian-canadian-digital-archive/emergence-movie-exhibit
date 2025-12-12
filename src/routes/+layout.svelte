@@ -91,7 +91,12 @@
 </script>
 
 <svelte:head>
-  <title>SACDA - Emergence Documentary Exhibit</title>
+  <!-- HTML Meta Tags -->
+  <title>South Asian Canadian Digital Archive</title>
+  <meta
+    name="description"
+    content="For Kayden, Jag, and Amar, awakening to and expressing their sexuality within conservative South Asian families was a lonely and terrifying experience. Heart-wrenching and healing, their distinct coming-out paths offer comfort, compassion, and inspiration to individuals and communities struggling with acceptance."
+  />
 
   <script
     src="https://kit.fontawesome.com/30f055fc02.js"
@@ -111,25 +116,34 @@
     sizes="192x192"
   />
   <meta name="apple-mobile-web-app-title" content="SACDA Exhibit" />
-
-  <meta name="description" content="For Kayden, Jag, and Amar, awakening to and expressing their sexuality within conservative South Asian families was a lonely and terrifying experience. Heart-wrenching and healing, their distinct coming-out paths offer comfort, compassion, and inspiration to individuals and communities struggling with acceptance." />
   <meta name="keywords" content={siteData.keywords.join(", ")} />
-  <meta
-    property="og:title"
-    content="Emergence: Out of the Shadows - SACDA Exhibit"
-  />
-  <meta property="og:description" content="For Kayden, Jag, and Amar, awakening to and expressing their sexuality within conservative South Asian families was a lonely and terrifying experience. Heart-wrenching and healing, their distinct coming-out paths offer comfort, compassion, and inspiration to individuals and communities struggling with acceptance." />
-  <meta property="og:image" content={withBase("/poster.webp")} />
+
+  <!-- Facebook Meta Tags -->
+  <meta property="og:url" content="https://sacda.ca/" />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Emergence: Out of the shadows | SACDA" />
-  <!-- <meta property="og:url" content="https://sacda.ca" /> -->
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:title" content="South Asian Canadian Digital Archive" />
   <meta
-    name="twitter:title"
-    content="Emergence: Out of the Shadows - SACDA Exhibit"
+    property="og:description"
+    content="For Kayden, Jag, and Amar, awakening to and expressing their sexuality within conservative South Asian families was a lonely and terrifying experience. Heart-wrenching and healing, their distinct coming-out paths offer comfort, compassion, and inspiration to individuals and communities struggling with acceptance."
   />
-  <meta name="twitter:description" content="For Kayden, Jag, and Amar, awakening to and expressing their sexuality within conservative South Asian families was a lonely and terrifying experience. Heart-wrenching and healing, their distinct coming-out paths offer comfort, compassion, and inspiration to individuals and communities struggling with acceptance." />
-  <meta name="twitter:image" content={withBase("/poster.webp")} />
+  <meta
+    property="og:image"
+    content="https://sacda.ca/exhibits/emergence/poster.webp
+  />
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="twitter:domain" content="sacda.ca" />
+  <meta property="twitter:url" content="https://sacda.ca/" />
+  <meta name="twitter:title" content="South Asian Canadian Digital Archive" />
+  <meta
+    name="twitter:description"
+    content="For Kayden, Jag, and Amar, awakening to and expressing their sexuality within conservative South Asian families was a lonely and terrifying experience. Heart-wrenching and healing, their distinct coming-out paths offer comfort, compassion, and inspiration to individuals and communities struggling with acceptance."
+  />
+  <meta
+    name="twitter:image"
+    content="https://sacda.ca/exhibits/emergence/poster.webp
+  />
 
   <meta name="author" content="South Asian Canadian Digital Archive" />
   <meta name="geo.placename" content={siteData.placename} />

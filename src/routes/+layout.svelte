@@ -91,34 +91,7 @@
 </script>
 
 <svelte:head>
-  <!-- HTML Meta Tags -->
-  <title>South Asian Canadian Digital Archive</title>
-  <meta
-    name="description"
-    content="For Kayden, Jag, and Amar, awakening to and expressing their sexuality within conservative South Asian families was a lonely and terrifying experience. Heart-wrenching and healing, their distinct coming-out paths offer comfort, compassion, and inspiration to individuals and communities struggling with acceptance."
-  />
-
-  <script
-    src="https://kit.fontawesome.com/30f055fc02.js"
-    crossorigin="anonymous"
-  ></script>
-
-  <link
-    rel="icon"
-    type="image/png"
-    href={withBase("/favicon-32x32.png")}
-    sizes="32x32"
-  />
-  <link
-    rel="icon"
-    type="image/png"
-    href={withBase("/logo.png")}
-    sizes="192x192"
-  />
-  <meta name="apple-mobile-web-app-title" content="SACDA Exhibit" />
-  <meta name="keywords" content={siteData.keywords.join(", ")} />
-
-  <!-- Facebook Meta Tags -->
+  <!-- Open Graph / Facebook Meta Tags - MUST be first for crawler compatibility -->
   <meta property="og:url" content="https://sacda.ca/exhibits/emergence/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Emergence: Out of the Shadows | SACDA" />
@@ -128,7 +101,7 @@
   />
   <meta
     property="og:image"
-    content="https://sacda.ca/exhibits/emergence/poster.jpg"
+    content="https://test.sacda.ca/exhibits/emergence/poster.jpg"
   />
 
   <!-- Twitter Meta Tags -->
@@ -142,13 +115,36 @@
   />
   <meta
     name="twitter:image"
-    content="https://sacda.ca/exhibits/emergence/poster.jpg"
+    content="https://test.sacda.ca/exhibits/emergence/poster.jpg"
   />
 
+  <!-- HTML Meta Tags -->
+  <title>Emergence: Out of the Shadows | SACDA</title>
+  <meta
+    name="description"
+    content="For Kayden, Jag, and Amar, awakening to and expressing their sexuality within conservative South Asian families was a lonely and terrifying experience. Heart-wrenching and healing, their distinct coming-out paths offer comfort, compassion, and inspiration to individuals and communities struggling with acceptance."
+  />
   <meta name="author" content="South Asian Canadian Digital Archive" />
   <meta name="geo.placename" content={siteData.placename} />
   <meta name="geo.region" content={siteData.region} />
+  <meta name="apple-mobile-web-app-title" content="SACDA Exhibit" />
+  <meta name="keywords" content={siteData.keywords.join(", ")} />
 
+  <!-- Favicons -->
+  <link
+    rel="icon"
+    type="image/png"
+    href={withBase("/favicon-32x32.png")}
+    sizes="32x32"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    href={withBase("/logo.png")}
+    sizes="192x192"
+  />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
     rel="preconnect"
@@ -159,6 +155,12 @@
     href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet"
   />
+
+  <!-- FontAwesome - moved to end because it injects massive CSS -->
+  <script
+    src="https://kit.fontawesome.com/30f055fc02.js"
+    crossorigin="anonymous"
+  ></script>
 </svelte:head>
 
 <svelte:window bind:scrollY />

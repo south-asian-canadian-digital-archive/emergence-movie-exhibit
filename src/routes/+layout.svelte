@@ -128,7 +128,7 @@
   />
   <meta
     property="og:image"
-    content="https://sacda.ca/exhibits/emergence/poster.webp"
+    content="https://sacda.ca/exhibits/emergence/poster.jpg"
   />
 
   <!-- Twitter Meta Tags -->
@@ -142,7 +142,7 @@
   />
   <meta
     name="twitter:image"
-    content="https://sacda.ca/exhibits/emergence/poster.webp"
+    content="https://sacda.ca/exhibits/emergence/poster.jpg"
   />
 
   <meta name="author" content="South Asian Canadian Digital Archive" />

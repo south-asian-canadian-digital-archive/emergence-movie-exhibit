@@ -18,6 +18,8 @@
   let awardsSection: HTMLElement;
   let awardsComponent: Awards;
 
+  let videoLoaded = $state(false);
+
   const scrollToMain = () => {
     gsap.to(window, {
       duration: 0.5,
@@ -37,6 +39,7 @@
   };
 
   onMount(() => {
+    videoLoaded = true;
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
     // apply parallax effect to any element with a data-speed attribute
@@ -113,9 +116,11 @@
       disablePictureInPicture={true}
       controls={false}
       poster={withBase("/stills/Kayden Still Photo (1).jpg")}
-      preload="metadata"
+      preload="none"
     >
-      <source src={trailer} type="video/mp4" />
+      {#if videoLoaded}
+        <source src={trailer} type="video/mp4" />
+      {/if}
       Your browser does not support the video tag.
     </video>
 
@@ -133,9 +138,11 @@
         playsinline
         disablePictureInPicture={true}
         poster={withBase("/stills/Kayden Still Photo (1).jpg")}
-        preload="metadata"
+        preload="none"
       >
-        <source src={trailer} type="video/mp4" />
+        {#if videoLoaded}
+          <source src={trailer} type="video/mp4" />
+        {/if}
         <img
           src={withBase("/poster.webp")}
           alt="Emergence: Out of the Shadows - Documentary poster featuring stories of LGBTQ+ South Asian individuals"

@@ -56,7 +56,7 @@
 
   const embedUrl = $derived.by(
     () =>
-      `https://www.youtube.com/embed/${selectedVideo.videoId}?rel=0&modestbranding=1&color=white`
+      `https://www.youtube.com/embed/${selectedVideo.videoId}?rel=0&modestbranding=1&color=white`,
   );
 
   const textSizes = $derived({
@@ -66,9 +66,12 @@
     lg: isMobile.current ? "text-lg" : "text-xl",
   });
 
+  let isPlaying = $state(false);
+
   function selectVideo(idx: number) {
     if (idx === selectedVideoIndex) return;
     selectedVideoIndex = idx;
+    isPlaying = false;
   }
 
   function getThumbnail(videoId: string) {
@@ -96,18 +99,39 @@
             ? ''
             : 'md:col-span-3'}"
         >
-          <div class="relative w-full aspect-video">
-            <iframe
-              src={embedUrl}
-              title={selectedVideo.title}
-              width="1280"
-              height="720"
-              class="absolute inset-0 h-full w-full"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              referrerpolicy="strict-origin-when-cross-origin"
-            ></iframe>
+          <div class="relative w-full aspect-video group">
+            {#if isPlaying}
+              <iframe
+                src={embedUrl + "&autoplay=1"}
+                title={selectedVideo.title}
+                width="1280"
+                height="720"
+                class="absolute inset-0 h-full w-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                referrerpolicy="strict-origin-when-cross-origin"
+              ></iframe>
+            {:else}
+              <!-- Facade -->
+              <button
+                type="button"
+                class="absolute inset-0 w-full h-full flex items-center justify-center bg-black/50 group-hover:bg-black/40 transition-colors cursor-pointer"
+                onclick={() => (isPlaying = true)}
+                aria-label="Play video"
+              >
+                <img
+                  src={getThumbnail(selectedVideo.videoId)}
+                  alt={selectedVideo.title}
+                  class="absolute inset-0 w-full h-full object-cover -z-10"
+                  loading="lazy"
+                />
+                <div
+                  class="w-16 h-16 md:w-20 md:h-20 bg-primary/90 text-background rounded-full flex items-center justify-center pl-1 shadow-[0_0_30px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-300"
+                >
+                  <i class="fa-solid fa-play text-2xl md:text-3xl"></i>
+                </div>
+              </button>
+            {/if}
           </div>
         </div>
 
@@ -158,7 +182,7 @@
               "group relative flex flex-col overflow-hidden rounded-lg border border-transparent bg-background/5 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60",
               idx === selectedVideoIndex
                 ? "border-primary bg-primary/10"
-                : "hover:border-primary/60 hover:bg-background/10"
+                : "hover:border-primary/60 hover:bg-background/10",
             )}
           >
             <img

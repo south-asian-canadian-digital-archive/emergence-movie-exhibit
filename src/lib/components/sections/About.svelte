@@ -200,13 +200,16 @@
     </div>
 
     <!-- Language selector buttons -->
-    <div class="flex flex-wrap justify-center gap-3 px-4">
+    <div class="flex flex-wrap justify-center gap-3 px-4" role="group" aria-label="Select synopsis language">
       {#each availableLanguages as [langCode, langData]}
         <button
+          type="button"
           class="px-4 py-2 underline italic {isMobile.current
             ? 'text-2xs'
             : 'text-xs'} underline-offset-2 cursor-pointer"
           onclick={() => selectLanguage(langCode)}
+          aria-pressed={selectedLanguage === langCode}
+          aria-label="Read synopsis in {langData.name}"
         >
           {langData.name}
         </button>

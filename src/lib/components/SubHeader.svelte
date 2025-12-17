@@ -186,14 +186,13 @@
           </nav>
         </div>
       {:else}
-        <nav class="flex text-right gap-3">
+        <nav class="flex text-right gap-3" aria-label="Main navigation">
           {#each navigationItems as item}
             <div class="flex flex-col items-center overflow-hidden">
-              <!-- svelte-ignore a11y_click_events_have_key_events -->
-              <!-- svelte-ignore a11y_no_static_element_interactions -->
-              <span
+              <button
+                type="button"
                 onclick={() => handleNavigation(item.target)}
-                class="group text-xs md:text-sm tracking-tight font-[Poppins] uppercase transition-all duration-200 w-full cursor-pointer font-bold text-right"
+                class="group text-xs md:text-sm tracking-tight font-[Poppins] uppercase transition-all duration-200 w-full cursor-pointer font-bold text-right bg-transparent border-none"
                 style={isMobile.current
                   ? "text-shadow: 2px 2px 4px rgba(0,0,0,0.7);"
                   : ""}
@@ -202,7 +201,7 @@
                 <span
                   class="block h-0.5 bg-white rounded transition-all duration-200 ease-in-out w-0 group-hover:w-full"
                 ></span>
-              </span>
+              </button>
             </div>
           {/each}
         </nav>

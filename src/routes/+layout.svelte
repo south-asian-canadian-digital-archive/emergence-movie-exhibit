@@ -14,6 +14,7 @@
   import SubHeader from "$lib/components/SubHeader.svelte";
   import SubFooter from "$lib/components/SubFooter.svelte";
   import Cursor from "$lib/components/Cursor.svelte";
+  import SkipLink from "$lib/components/SkipLink.svelte";
 
   import shareThis, { type ShareThisInstance } from "share-this";
   import * as twitterSharer from "share-this/dist/sharers/twitter";
@@ -66,7 +67,7 @@
     // gsap.registerPlugin(ScrollTrigger);
 
     selectionShare = shareThis({
-      selector: "#smooth-wrapper",
+      selector: "#main-content",
       popoverClass: "custom-share-popover",
       sharers: [twitterSharer, facebookSharer, redditSharer, emailSharer],
     });
@@ -129,6 +130,17 @@
   <meta name="geo.region" content={siteData.region} />
   <meta name="apple-mobile-web-app-title" content="SACDA Exhibit" />
   <meta name="keywords" content={siteData.keywords.join(", ")} />
+  <link rel="canonical" href="https://sacda.ca/exhibits/emergence/" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:locale" content="en_CA" />
+
+  <!-- LCP Preload -->
+  <link
+    rel="preload"
+    as="image"
+    href={withBase("/stills/Kayden Still Photo (1).jpg")}
+    fetchpriority="high"
+  />
 
   <!-- Favicons -->
   <link
@@ -156,15 +168,116 @@
     rel="stylesheet"
   />
 
-  <!-- FontAwesome - moved to end because it injects massive CSS -->
+  <!-- FontAwesome -->
   <script
     src="https://kit.fontawesome.com/30f055fc02.js"
     crossorigin="anonymous"
+    defer
   ></script>
+
+  <!-- Structured Data (JSON-LD) -->
+  {@html `<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Movie",
+        "@id": "https://sacda.ca/exhibits/emergence/#movie",
+        "name": "Emergence: Out of the Shadows",
+        "alternateName": "Emergence",
+        "description": "For Kayden, Jag, and Amar, awakening to and expressing their sexuality within conservative South Asian families was a lonely and terrifying experience. Heart-wrenching and healing, their distinct coming-out paths offer comfort, compassion, and inspiration to individuals and communities struggling with acceptance.",
+        "dateCreated": "2021",
+        "genre": ["Documentary", "LGBTQ+", "Drama"],
+        "inLanguage": ["en", "pa", "hi"],
+        "director": {
+          "@type": "Person",
+          "name": "Vinay Giridhar"
+        },
+        "productionCompany": {
+          "@type": "Organization",
+          "name": "Sher Films",
+          "parentOrganization": {
+            "@type": "Organization",
+            "name": "Sher Vancouver LGBTQ Friends Society"
+          }
+        },
+        "duration": "PT81M",
+        "image": "https://sacda.ca/exhibits/emergence/poster.jpg",
+        "trailer": {
+          "@type": "VideoObject",
+          "name": "Emergence: Out of the Shadows - Official Trailer",
+          "description": "Official trailer for the documentary Emergence: Out of the Shadows",
+          "thumbnailUrl": "https://img.youtube.com/vi/VNjT3g1bf_Q/maxresdefault.jpg",
+          "uploadDate": "2021-09-01",
+          "embedUrl": "https://www.youtube.com/embed/VNjT3g1bf_Q"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "bestRating": "5",
+          "ratingCount": "51"
+        },
+        "award": [
+          "Best Documentary - Vancouver International South Asian Film Festival",
+          "Christopher Marlowe Award for Best Documentary Feature Film - San Antonio QFest",
+          "Best Film Award - Championing Change - UK Asian Film Festival",
+          "Academy Award Qualifying - Out On Film Atlanta",
+          "BAFTA Qualifying - Frameline San Francisco"
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://sacda.ca/exhibits/emergence/",
+        "url": "https://sacda.ca/exhibits/emergence/",
+        "name": "Emergence: Out of the Shadows | SACDA",
+        "description": "A powerful documentary exploring LGBTQ+ stories in South Asian communities. Watch the award-winning film about courage, family, and acceptance.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "South Asian Canadian Digital Archive",
+          "url": "https://sacda.ca"
+        },
+        "mainEntity": {
+          "@id": "https://sacda.ca/exhibits/emergence/#movie"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "SACDA",
+            "item": "https://sacda.ca"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Exhibits",
+            "item": "https://sacda.ca/exhibits"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Emergence: Out of the Shadows",
+            "item": "https://sacda.ca/exhibits/emergence/"
+          }
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://sacda.ca/#organization",
+        "name": "South Asian Canadian Digital Archive",
+        "url": "https://sacda.ca",
+        "logo": "https://sacda.ca/logo.png"
+      }
+    ]
+  }
+  </script>`}
 </svelte:head>
 
 <svelte:window bind:scrollY />
 
+<SkipLink />
 <Cursor />
 
 <div class="h-full w-full">
@@ -174,7 +287,7 @@
 
   <div
     class="-mt-16 mb-[400px] overflow-x-clip overflow-y-clip"
-    id="smooth-wrapper"
+    id="main-content"
   >
     {@render children?.()}
   </div>
@@ -215,7 +328,7 @@
   <button
     transition:fly={{ y: 10, duration: 500 }}
     class="group w-fit fixed bottom-6 left-2 md:left-auto md:right-6 z-[9999] rounded-full bg-[#f49d2d] object-cover py-0.5 shadow-lg transition-all duration-500 hover:-translate-y-1"
-    aria-label="yuh"
+    aria-label="Scroll to top"
     onclick={() => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }}

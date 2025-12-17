@@ -29,6 +29,13 @@
     });
   };
 
+  const handleKeydown = (e: KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      scrollToMain();
+    }
+  };
+
   onMount(() => {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -85,16 +92,16 @@
   });
 </script>
 
-
 <main class="*:rounded-t-2xl">
-  <!-- svelte-ignore a11y_click_events_have_key_events -->
-  <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-  <section
+  <div
     bind:this={coverElm}
     class="relative w-full min-h-screen flex items-center justify-center overflow-hidden rounded-none! *:rounded-none!"
     data-cursor-state="indicate-scroll-down"
-    aria-label="Click to scroll to main content"
+    role="button"
+    tabindex="0"
+    aria-label="Click or press Enter to scroll to main content"
     onclick={scrollToMain}
+    onkeydown={handleKeydown}
   >
     <!-- Background Video -->
     <video
@@ -105,6 +112,8 @@
       playsinline
       disablePictureInPicture={true}
       controls={false}
+      poster={withBase("/stills/Kayden Still Photo (1).jpg")}
+      preload="metadata"
     >
       <source src={trailer} type="video/mp4" />
       Your browser does not support the video tag.
@@ -123,16 +132,20 @@
         loop
         playsinline
         disablePictureInPicture={true}
+        poster={withBase("/stills/Kayden Still Photo (1).jpg")}
+        preload="metadata"
       >
         <source src={trailer} type="video/mp4" />
         <img
           src={withBase("/poster.webp")}
-          title="Your browser does not support the video tag."
-          alt=""
+          alt="Emergence: Out of the Shadows - Documentary poster featuring stories of LGBTQ+ South Asian individuals"
+          width="1280"
+          height="720"
+          fetchpriority="high"
         />
       </video>
     </div>
-  </section>
+  </div>
 
   <section id="about" class="w-full md:h-screen bg-background text-gray-900">
     <About />

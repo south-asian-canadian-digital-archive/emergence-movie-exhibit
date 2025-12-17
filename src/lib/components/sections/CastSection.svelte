@@ -119,18 +119,22 @@
       >
         {#each castMembers as member, idx}
           <button
+            type="button"
             onmouseenter={() => selectMember(idx)}
             onclick={() => selectMember(idx)}
             style="cursor: pointer;"
             class="group relative w-full rounded-lg sm:rounded-xl overflow-hidden bg-gray-100 {isMobile.current
               ? 'min-h-[12vh]'
               : ''}"
+            aria-pressed={idx === selectedMember}
+            aria-label="View details for {member.name}, {member.position}"
           >
             {#if member.photo}
               <img
                 src={withBase(member.photo)}
-                alt={member.name}
+                alt="Photo of {member.name}, {member.position}"
                 class="w-full h-full object-cover"
+                loading="lazy"
               />
             {:else}
               <div

@@ -60,18 +60,17 @@
     </div>
 
     <!-- Quick Links -->
-    <div class="flex flex-wrap justify-center gap-6 mb-4">
+    <nav class="flex flex-wrap justify-center gap-6 mb-4" aria-label="Quick links">
       {#each quickLinks as link}
-        <!-- svelte-ignore a11y_click_events_have_key_events -->
-        <!-- svelte-ignore a11y_no_static_element_interactions -->
-        <span
+        <button
+          type="button"
           onclick={() => handleNavigation(link.target)}
-          class="text-sm text-gray-600 hover:text-emerald-600 font-medium transition-colors cursor-pointer"
+          class="text-sm text-gray-600 hover:text-emerald-600 font-medium transition-colors cursor-pointer bg-transparent border-none"
         >
           {link.label}
-        </span>
+        </button>
       {/each}
-    </div>
+    </nav>
 
     <!-- Contact Info -->
     <div class="text-center text-xs text-gray-500">
